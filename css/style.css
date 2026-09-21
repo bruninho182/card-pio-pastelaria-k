@@ -1215,3 +1215,206 @@ button {
     font-size: 1.1rem;
   }
 }
+
+/* =========================================================
+   BANNER DE INSTALAÇÃO DO PWA
+   ========================================================= */
+.install-banner {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 25;
+  background: #fff;
+  border-radius: var(--raio);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 12px 14px;
+  transform: translateY(150%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.install-banner.visivel {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.install-banner-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.install-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d64545 0%, #a83232 100%);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(214, 69, 69, 0.3);
+}
+
+.install-texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.install-texto strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+  line-height: 1.2;
+}
+.install-texto span {
+  font-size: 0.75rem;
+  color: var(--cor-muted);
+  line-height: 1.2;
+}
+
+.install-btn {
+  background: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicao);
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.install-btn:hover {
+  background: var(--cor-primaria-escura);
+}
+.install-btn:active {
+  transform: scale(0.95);
+}
+
+.install-close {
+  background: none;
+  border: none;
+  color: var(--cor-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transicao);
+}
+.install-close:hover {
+  background: #f0f0f0;
+}
+
+/* =========================================================
+   MODAL DE INSTRUÇÕES iOS
+   ========================================================= */
+.modal-ios {
+  z-index: 50;
+}
+
+.ios-intro {
+  font-size: 0.95rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.ios-passos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ios-passos li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ios-passo-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cor-primaria-clara);
+  color: var(--cor-primaria);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(214, 69, 69, 0.2);
+}
+
+.ios-passos strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.ios-passos li > div > span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--cor-muted);
+  line-height: 1.4;
+}
+
+.ios-share {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* Ajustes mobile do banner */
+@media (max-width: 400px) {
+  .install-banner {
+    left: 8px;
+    right: 8px;
+  }
+  .install-texto strong {
+    font-size: 0.85rem;
+  }
+  .install-texto span {
+    font-size: 0.7rem;
+  }
+  .install-btn {
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+  .install-icone {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Esconde o banner em telas grandes */
+@media (min-width: 641px) {
+  .install-banner {
+    display: none;
+  }
+}

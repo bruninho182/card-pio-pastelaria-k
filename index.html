@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Pastelaria" />
-  <title>Pastelaria Kpricho — Cardápio</title>
+  <title>Pastelaria do Hiago — Cardápio</title>
 
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
@@ -209,6 +209,76 @@
   </div>
 
   <!-- ============================================================
+       MODAL DE INSTRUÇÕES PARA iOS (instalação)
+       ============================================================ -->
+  <div id="modal-ios" class="modal modal-ios" aria-hidden="true">
+    <div class="modal-content">
+      <div class="sheet-handle"></div>
+
+      <div class="modal-header">
+        <h2>Instalar o app</h2>
+        <button id="btn-fechar-ios" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="ios-intro">
+          Para instalar o cardápio no seu iPhone, siga os passos:
+        </p>
+
+        <ol class="ios-passos">
+          <li>
+            <span class="ios-passo-num">1</span>
+            <div>
+              <strong>Abra no Safari</strong>
+              <span>Se você está em outro navegador, abra este site no Safari.</span>
+            </div>
+          </li>
+          <li>
+            <span class="ios-passo-num">2</span>
+            <div>
+              <strong>Toque no botão Compartilhar</strong>
+              <span>É o ícone <span class="ios-share">⬆️</span> na barra inferior.</span>
+            </div>
+          </li>
+          <li>
+            <span class="ios-passo-num">3</span>
+            <div>
+              <strong>Escolha "Adicionar à Tela de Início"</strong>
+              <span>Role as opções até encontrar essa.</span>
+            </div>
+          </li>
+          <li>
+            <span class="ios-passo-num">4</span>
+            <div>
+              <strong>Toque em "Adicionar"</strong>
+              <span>Pronto! O ícone do app vai aparecer na sua tela.</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-ok-ios" class="btn-primario">Entendi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BANNER DE INSTALAÇÃO DO PWA
+       ============================================================ -->
+  <div id="install-banner" class="install-banner">
+    <div class="install-banner-conteudo">
+      <div class="install-icone">🥟</div>
+      <div class="install-texto">
+        <strong>Instale nosso cardápio</strong>
+        <span>Acesso rápido direto da sua tela inicial</span>
+      </div>
+      <button id="btn-instalar" class="install-btn">Instalar</button>
+      <button id="btn-fechar-install" class="install-close" aria-label="Fechar">✕</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
        OVERLAY
        ============================================================ -->
   <div id="overlay" class="overlay"></div>
@@ -220,6 +290,7 @@
   <script src="js/cart.js"></script>
   <script src="js/app.js"></script>
   <script src="js/pwa.js"></script>
+  <script src="js/install.js"></script>
 
 </body>
 </html>
