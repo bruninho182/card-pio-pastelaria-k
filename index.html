@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pastelaria Kpricho — Cardápio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <div class="container topbar-content">
+      <div>
+        <h1 id="loja-nome"></h1>
+        <p id="loja-info" class="muted"></p>
+      </div>
+      <button id="btn-carrinho" class="btn-carrinho" aria-label="Abrir carrinho">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ CATEGORIAS ============ -->
+  <nav class="categorias-nav">
+    <div class="container" id="categorias-nav"></div>
+  </nav>
+
+  <!-- ============ PRODUTOS ============ -->
+  <main class="container">
+    <section id="lista-produtos" class="grid-produtos"></section>
+  </main>
+
+  <!-- ============ DRAWER CARRINHO ============ -->
+  <aside id="drawer-carrinho" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Seu Pedido</h2>
+      <button id="btn-fechar-carrinho" aria-label="Fechar carrinho">✕</button>
+    </div>
+    <div id="itens-carrinho" class="drawer-itens"></div>
+    <div class="drawer-footer">
+      <div class="linha-total">
+        <span>Total:</span>
+        <strong id="total-carrinho">R$ 0,00</strong>
+      </div>
+      <button id="btn-finalizar" class="btn-primario">Finalizar Pedido</button>
+    </div>
+  </aside>
+
+  <!-- ============ MODAL CHECKOUT ============ -->
+  <div id="modal-checkout" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Finalizar Pedido</h2>
+        <button id="btn-fechar-modal" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Entrega ou Retirada -->
+        <section class="checkout-secao">
+          <h3>Como você quer receber?</h3>
+          <div class="toggle-tipo">
+            <button type="button" class="tipo-btn ativo" data-tipo="entrega">
+              🛵 Entrega
+            </button>
+            <button type="button" class="tipo-btn" data-tipo="retirada">
+              🏪 Retirada
+            </button>
+          </div>
+        </section>
+
+        <!-- Endereço (só aparece em entrega) -->
+        <section id="secao-endereco" class="checkout-secao">
+          <h3>Endereço de entrega</h3>
+          <input
+            type="text"
+            id="input-endereco"
+            placeholder="Rua, número, bairro e complemento"
+            autocomplete="street-address"
+          />
+          <input
+            type="text"
+            id="input-referencia"
+            placeholder="Ponto de referência (opcional)"
+          />
+        </section>
+
+        <!-- Nome do cliente -->
+        <section class="checkout-secao">
+          <h3>Seu nome</h3>
+          <input
+            type="text"
+            id="input-nome"
+            placeholder="Como devemos te chamar?"
+            autocomplete="name"
+          />
+        </section>
+
+        <!-- Forma de pagamento -->
+        <section class="checkout-secao">
+          <h3>Forma de pagamento</h3>
+          <div class="pagamento-opcoes">
+            <label class="pagamento-card">
+              <input type="radio" name="pagamento" value="Pix" />
+              <span>💠 Pix</span>
+            </label>
+            <label class="pagamento-card">
+              <input type="radio" name="pagamento" value="Dinheiro" />
+              <span>💵 Dinheiro</span>
+            </label>
+            <label class="pagamento-card">
+              <input type="radio" name="pagamento" value="Cartão" />
+              <span>💳 Cartão</span>
+            </label>
+          </div>
+
+          <div id="secao-troco" class="hidden">
+            <input
+              type="text"
+              id="input-troco"
+              placeholder="Troco para quanto? (ex: 50)"
+              inputmode="numeric"
+            />
+          </div>
+        </section>
+
+        <!-- Resumo -->
+        <section class="checkout-secao resumo-checkout">
+          <div class="linha-resumo">
+            <span>Subtotal</span>
+            <span id="resumo-subtotal">R$ 0,00</span>
+          </div>
+          <div class="linha-resumo" id="linha-entrega">
+            <span>Taxa de entrega</span>
+            <span id="resumo-entrega">R$ 0,00</span>
+          </div>
+          <div class="linha-resumo total">
+            <span>Total</span>
+            <strong id="resumo-total">R$ 0,00</strong>
+          </div>
+        </section>
+
+        <p id="aviso-checkout" class="aviso hidden"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-confirmar-pedido" class="btn-primario">
+          Enviar Pedido pelo WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ OVERLAY ============ -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- ============ SCRIPTS (ordem importa!) ============ -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
