@@ -12,6 +12,14 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+
+  <!-- Font Awesome (para os ícones do rodapé) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    referrerpolicy="no-referrer"
+  />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -44,6 +52,24 @@
   <main class="container">
     <section id="lista-produtos" class="grid-produtos"></section>
   </main>
+
+  <!-- ============================================================
+       FOOTBAR (créditos + botão de instalação)
+       ============================================================ -->
+  <footer class="footbar">
+    <div class="container footbar-content">
+      <p class="footbar-credito">
+        <i class="fas fa-code"></i> Desenvolvido por
+        <a href="https://github.com/bruninho182" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> Bruno Ferreira
+        </a>
+      </p>
+
+      <button id="btn-instalar-footer" class="footbar-install hidden">
+        <i class="fas fa-download"></i> Instalar App
+      </button>
+    </div>
+  </footer>
 
   <!-- ============================================================
        DRAWER DO CARRINHO
