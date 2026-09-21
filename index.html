@@ -2,13 +2,23 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#d64545" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pastelaria" />
   <title>Pastelaria Kpricho — Cardápio</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ============ TOPBAR ============ -->
+  <!-- ============================================================
+       TOPBAR
+       ============================================================ -->
   <header class="topbar">
     <div class="container topbar-content">
       <div>
@@ -21,23 +31,33 @@
     </div>
   </header>
 
-  <!-- ============ CATEGORIAS ============ -->
+  <!-- ============================================================
+       CATEGORIAS
+       ============================================================ -->
   <nav class="categorias-nav">
     <div class="container" id="categorias-nav"></div>
   </nav>
 
-  <!-- ============ PRODUTOS ============ -->
+  <!-- ============================================================
+       LISTA DE PRODUTOS
+       ============================================================ -->
   <main class="container">
     <section id="lista-produtos" class="grid-produtos"></section>
   </main>
 
-  <!-- ============ DRAWER CARRINHO ============ -->
+  <!-- ============================================================
+       DRAWER DO CARRINHO
+       ============================================================ -->
   <aside id="drawer-carrinho" class="drawer" aria-hidden="true">
+    <div class="sheet-handle"></div>
+
     <div class="drawer-header">
       <h2>Seu Pedido</h2>
       <button id="btn-fechar-carrinho" aria-label="Fechar carrinho">✕</button>
     </div>
+
     <div id="itens-carrinho" class="drawer-itens"></div>
+
     <div class="drawer-footer">
       <div class="linha-total">
         <span>Total:</span>
@@ -47,15 +67,42 @@
     </div>
   </aside>
 
-  <!-- ============ MODAL CHECKOUT ============ -->
+  <!-- ============================================================
+       MODAL DE PRODUTO (ficha com ingredientes + quantidade)
+       ============================================================ -->
+  <div id="modal-produto" class="modal modal-produto" aria-hidden="true">
+    <div class="modal-content">
+      <div class="sheet-handle"></div>
+
+      <div class="modal-header">
+        <h2 id="produto-titulo">Produto</h2>
+        <button id="btn-fechar-produto" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-body" id="produto-body"></div>
+
+      <div class="modal-footer">
+        <button id="btn-produto-add" class="btn-primario">
+          Adicionar ao Carrinho
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE CHECKOUT
+       ============================================================ -->
   <div id="modal-checkout" class="modal" aria-hidden="true">
     <div class="modal-content">
+      <div class="sheet-handle"></div>
+
       <div class="modal-header">
         <h2>Finalizar Pedido</h2>
         <button id="btn-fechar-modal" aria-label="Fechar">✕</button>
       </div>
 
       <div class="modal-body">
+
         <!-- Entrega ou Retirada -->
         <section class="checkout-secao">
           <h3>Como você quer receber?</h3>
@@ -124,6 +171,16 @@
           </div>
         </section>
 
+        <!-- Observações -->
+        <section class="checkout-secao">
+          <h3>Observações (opcional)</h3>
+          <textarea
+            id="input-obs"
+            placeholder="Ex: tirar a cebola, ponto da massa, etc."
+            rows="3"
+          ></textarea>
+        </section>
+
         <!-- Resumo -->
         <section class="checkout-secao resumo-checkout">
           <div class="linha-resumo">
@@ -151,12 +208,18 @@
     </div>
   </div>
 
-  <!-- ============ OVERLAY ============ -->
+  <!-- ============================================================
+       OVERLAY
+       ============================================================ -->
   <div id="overlay" class="overlay"></div>
 
-  <!-- ============ SCRIPTS (ordem importa!) ============ -->
+  <!-- ============================================================
+       SCRIPTS (a ordem importa!)
+       ============================================================ -->
   <script src="js/data.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
+
 </body>
 </html>

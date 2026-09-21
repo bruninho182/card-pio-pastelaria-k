@@ -1,7 +1,5 @@
 /* =========================================================
-   APP.JS — Renderização de loja, categorias e produtos
-   Envolvido em IIFE para não conflitar com o escopo global
-   do cart.js (que já declara `loja`).
+   APP.JS — Renderização + abertura do modal de produto
    ========================================================= */
 
 (function () {
@@ -9,19 +7,12 @@
 
   let categoriaAtiva = "todas";
 
-  /* =========================================================
-     CABEÇALHO DA LOJA
-     ========================================================= */
   function renderLoja() {
     document.getElementById("loja-nome").textContent = loja.nome;
-    document.getElementById(
-      "loja-info"
-    ).textContent = `${loja.horario} • ${loja.endereco}`;
+    document.getElementById("loja-info").textContent =
+      `${loja.horario} • ${loja.endereco}`;
   }
 
-  /* =========================================================
-     NAVEGAÇÃO DE CATEGORIAS
-     ========================================================= */
   function renderCategorias() {
     const nav = document.getElementById("categorias-nav");
 
@@ -49,9 +40,6 @@
     );
   }
 
-  /* =========================================================
-     LISTA DE PRODUTOS
-     ========================================================= */
   function renderProdutos() {
     const lista = document.getElementById("lista-produtos");
 
@@ -81,13 +69,15 @@
       .join("");
 
     lista.querySelectorAll(".btn-add").forEach((btn) =>
-      btn.addEventListener("click", () => adicionarAoCarrinho(btn.dataset.id))
+      btn.addEventListener("click", () => {
+        const produto = encontrarProduto(btn.dataset.id);
+        if (produto) abrirModalProduto(produto);
+      })
     );
+
+    atualizarBotoesProdutos();
   }
 
-  /* =========================================================
-     INICIALIZAÇÃO
-     ========================================================= */
   renderLoja();
   renderCategorias();
   renderProdutos();

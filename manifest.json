@@ -1,0 +1,20 @@
+{
+  "name": "Pastelaria Kpricho",
+  "short_name": "Pastelaria",
+  "description": "Cardápio digital da Pastelaria Kpricho",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf7f2",
+  "theme_color": "#d64545",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
